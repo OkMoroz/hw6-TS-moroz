@@ -1,11 +1,13 @@
-"use strict";
 class ShapeDimensions {
+    name;
+    color;
     constructor(name, color) {
         this.name = name;
         this.color = color;
     }
 }
 class Circle extends ShapeDimensions {
+    radius;
     constructor(name, color, radius) {
         super(name, color);
         this.radius = radius;
@@ -15,9 +17,11 @@ class Circle extends ShapeDimensions {
     }
 }
 class Rectangle extends ShapeDimensions {
+    name = "Rectangle";
+    length;
+    width;
     constructor(name, color, length, width) {
         super(name, color);
-        this.name = "Rectangle";
         this.length = length;
         this.width = width;
     }
@@ -29,9 +33,10 @@ class Rectangle extends ShapeDimensions {
     }
 }
 class Square extends ShapeDimensions {
+    name = "Square";
+    side;
     constructor(name, color, side) {
         super(name, color);
-        this.name = "Square";
         this.side = side;
     }
     calculateArea() {
@@ -42,6 +47,8 @@ class Square extends ShapeDimensions {
     }
 }
 class Triangle extends ShapeDimensions {
+    base;
+    height;
     constructor(name, color, base, height) {
         super(name, color);
         this.base = base;

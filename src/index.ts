@@ -1,4 +1,14 @@
-class ShapeDimensions {
+interface IProperties {
+  name: string;
+  color: string;
+}
+interface ICalculateArea {
+  calculateArea(): number;
+}
+interface IPrintItem {
+  print(): void;
+}
+abstract class ShapeDimensions implements IProperties, ICalculateArea {
   public readonly name: string;
   public readonly color: string;
 
@@ -6,13 +16,9 @@ class ShapeDimensions {
     this.name = name;
     this.color = color;
   }
+  abstract calculateArea(): number;
 }
-
-interface PrintItem {
-  print(): void;
-}
-
-class Circle extends ShapeDimensions {
+class Circle extends ShapeDimensions implements ICalculateArea {
   private radius: number;
 
   constructor(name: string, color: string, radius: number) {
@@ -24,8 +30,7 @@ class Circle extends ShapeDimensions {
     return Math.PI * this.radius ** 2;
   }
 }
-
-class Rectangle extends ShapeDimensions implements PrintItem {
+class Rectangle extends ShapeDimensions implements ICalculateArea, IPrintItem {
   public readonly name: string = "Rectangle";
   protected length: number;
   protected width: number;
@@ -46,8 +51,7 @@ class Rectangle extends ShapeDimensions implements PrintItem {
     );
   }
 }
-
-class Square extends ShapeDimensions implements PrintItem {
+class Square extends ShapeDimensions implements ICalculateArea, IPrintItem {
   public readonly name: string = "Square";
   private side: number;
 
@@ -66,8 +70,7 @@ class Square extends ShapeDimensions implements PrintItem {
     );
   }
 }
-
-class Triangle extends ShapeDimensions {
+class Triangle extends ShapeDimensions implements ICalculateArea {
   private base: number;
   private height: number;
 
